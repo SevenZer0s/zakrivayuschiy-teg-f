@@ -13,4 +13,54 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-main);
+  font-variation-settings: "wght" var(--weight-text);
+  background-image: var(--gradient-bg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header__content {
+  margin-block: 100px;
+  padding-inline: var(--padding-inline-header);
+  padding-block: var(--padding-block-header);
+  width: var(--adaptive-block-width); /* адаптивная ширина блока */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--theme-background);
+  border: 2px solid var(--theme-main__color);
+}
+
+.header__title, .header__text {
+  font-weight: 400; /* Наследует фонт вейт 700, нужен фикс */
+}
+
+.header__title {
+  font-family: var(--font-accent);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.header__text {
+  font-family: var(--font-accent);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.card {
+  width: var(--adaptive-block-width);
+  border: 2px solid var(--theme-main__color);
+}
+
+.card__title {
+  font-variation-settings: "wght" var(--weight-title);
 }
