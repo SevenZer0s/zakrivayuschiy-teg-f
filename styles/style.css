@@ -103,37 +103,91 @@
 .card__buttons {
   display: flex;
   justify-content: flex-end;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+.card__icon-button {
+  padding-inline-end: 12px;
 }
 
 .card__like-button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-right: 25px;
-  padding-bottom: 25px;
+  padding: 10.5px 35px;
+  border: 2px solid var(--theme-main__color);
 }
 
 .button__text {
   font-family: var(--font-accent);
   font-size: 14px;
-  border: 2px solid var(--theme-main__color);
-  padding: 12.5px 37px;
 }
 
 .save__button {
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
-
 }
 
 .card__save-button {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 8px;
   background-color: var(--theme-background);
   padding: 17px 20px;
+  border: 2px solid var(--theme-main__color);
 }
 
+@media (width <= 375px) {
+  .save__button svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .card__save-button {
+    flex-direction: column;
+  }
+}
+
+.dialog {
+  display: none;
+  border: 2px solid var(--theme-main__color);
+  background-color: var(--theme-background);
+  width: fit-content;
+}
+
+.dialog__content {
+  padding: 30px;
+}
+
+@media (width <= 375px) {
+  .dialog__content {
+    padding: 30px 40px;
+  }
+}
+
+.dialog .button__text {
+  line-height: 150%;
+}
+
+.dialog__attention {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-block-end: 30px;
+}
+
+.dialog__ok-button {
+  padding: 10.5px 114.5px;
+  border: 2px solid var(--theme-main__color);
+  
+}
+
+dialog[open] {
+  display: block;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
