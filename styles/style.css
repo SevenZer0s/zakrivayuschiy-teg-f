@@ -10,6 +10,11 @@
 
 */
 
+.header__content,
+.card {
+  margin: 0 auto; /* Временное решение для центрирования страницы */
+}
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -19,9 +24,8 @@
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .header__content {
@@ -59,8 +63,77 @@
 .card {
   width: var(--adaptive-block-width);
   border: 2px solid var(--theme-main__color);
+  background-color: var(--theme-background);
+  margin-bottom: 50px;
 }
 
 .card__title {
   font-variation-settings: "wght" var(--weight-title);
+  padding: 4px 10px;
 }
+
+.card__image-wrapper {
+  position: relative;
+}
+
+.card__image {
+  width: 100%;
+}
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 14px;
+  font-family: var(--font-accent);
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  -webkit-text-stroke: 1px var(--theme-background);
+  text-stroke: 1px var(--theme-background);
+}
+
+.card__description {
+  padding: 25px;
+}
+
+.card__description p:first-child {
+  padding-bottom: 25px;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card__like-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+.button__text {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  border: 2px solid var(--theme-main__color);
+  padding: 12.5px 37px;
+}
+
+.save__button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+
+}
+
+.card__save-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--theme-background);
+  padding: 17px 20px;
+}
+

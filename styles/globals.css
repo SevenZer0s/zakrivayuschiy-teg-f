@@ -9,7 +9,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
 }
 
 h1,
@@ -28,6 +28,14 @@ li {
 
 a {
   color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 button,
