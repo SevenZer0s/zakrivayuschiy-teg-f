@@ -10,6 +10,8 @@
   --padding-inline-header: clamp(16px, -21.50px + 10.00vw, 122.5px);
   --theme-background: #fff;
   --theme-main__color: #000;
+  --animation-fill-color: #FF0000;
+  --contour-color: #000;
 
   --gradient-bg: 
   repeating-linear-gradient(to right, #d3d3d3 0, #d3d3d3 2px, transparent 2px, transparent 4px),
