@@ -19,7 +19,7 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--font-main);
-  font-variation-settings: "wght" var(--weight-text);
+  font-variation-settings: "wght" var(--weight-text, 410);
   background-image: var(--gradient-bg);
   background-size: cover;
   background-attachment: fixed;
@@ -66,7 +66,7 @@
 }
 
 .card__title {
-  font-variation-settings: "wght" var(--weight-title);
+  font-variation-settings: "wght" var(--weight-title, 715);
   padding: 4px 10px;
   font-size: 18px;
 }
@@ -81,6 +81,13 @@
   aspect-ratio: 1 / 1;
 }
 
+@supports (-webkit-text-stroke: 1px var(--theme-background)) or (text-stroke: 1px var(--theme-background)) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--theme-background);
+    text-stroke: 1px var(--theme-background);
+  }
+}
+
 .card__label {
   position: absolute;
   top: 25px;
@@ -89,8 +96,11 @@
   font-family: var(--font-accent);
   opacity: 0.5;
   mix-blend-mode: hard-light;
-  -webkit-text-stroke: 1px var(--theme-background);
-  text-stroke: 1px var(--theme-background);
+  text-shadow:
+      -1px -1px 0 var(--theme-background),
+      1px -1px 0 var(--theme-background),
+      -1px  1px 0 var(--theme-background),
+      1px  1px 0 var(--theme-background);
 }
 
 .card__description {
