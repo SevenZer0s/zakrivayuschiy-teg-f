@@ -12,7 +12,7 @@
 
 .header__content,
 .card {
-  margin: 0 auto; /* Временное решение для центрирования страницы */
+  margin: 0 auto;
 }
 
 .page {
@@ -124,8 +124,12 @@
 
 .card__icon-button {
   margin-right: 4px;
+  /* display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; */
   /* margin-right: 12px; Подгонка в макет*/
-  /* flex-shrink: 0; */
+  flex-shrink: 0;
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
 }
@@ -292,7 +296,8 @@ dialog::backdrop {
 
 .like-icon {
   transform-origin: center;
-  flex-shrink: 0;
+  /* transform-box: fill-box;
+  flex-shrink: 0; */
 }
 
 .like-icon .contour {
