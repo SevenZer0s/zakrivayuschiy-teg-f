@@ -30,7 +30,7 @@
   margin-block: 100px;
   padding-inline: var(--padding-inline-header);
   padding-block: var(--padding-block-header);
-  width: var(--adaptive-block-width); /* адаптивная ширина блока */
+  inline-size: var(--adaptive-block-width); /* адаптивная ширина блока */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -79,12 +79,24 @@
 .card__image {
   width: 100%;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
 }
 
 @supports (-webkit-text-stroke: 1px var(--theme-background)) or (text-stroke: 1px var(--theme-background)) {
   .card__label {
     -webkit-text-stroke: 1px var(--theme-background);
     text-stroke: 1px var(--theme-background);
+  }
+}
+
+@supports not ((-webkit-text-stroke: 1px var(--theme-background)) or (text-stroke: 1px var(--theme-background))) {
+  .card__label {
+    text-shadow:
+      -1px -1px 0 var(--theme-background), /* фолбэк, если text-stroke не работает */
+      1px -1px 0 var(--theme-background),
+      -1px  1px 0 var(--theme-background),
+      1px  1px 0 var(--theme-background);
   }
 }
 
@@ -96,18 +108,14 @@
   font-family: var(--font-accent);
   opacity: 0.5;
   mix-blend-mode: hard-light;
-  text-shadow:
-      -1px -1px 0 var(--theme-background),
-      1px -1px 0 var(--theme-background),
-      -1px  1px 0 var(--theme-background),
-      1px  1px 0 var(--theme-background);
 }
 
 .card__description {
   padding: 25px;
   padding-bottom: 20px;
   font-size: 18px;
-  line-height: 21px;
+  line-height: 1.3125rem;
+  /* line-height: 21px; */
 }
 
 .card__description p:first-child {
@@ -129,7 +137,7 @@
   justify-content: center;
   overflow: visible; */
   /* margin-right: 12px; Подгонка в макет*/
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
 }
@@ -143,13 +151,14 @@
 }
 
 .card__like-button {
-  /* padding: 10.5px 35px; */
-  padding: 7px 35px;
+  padding: 12.5px 35px;
+  /* padding: 7px 35px; */
   border: 2px solid var(--theme-main__color);
 }
 
 .button__text {
   font-family: var(--font-accent);
+  font-weight: 400;
   font-size: 14px;
   mix-blend-mode: difference;
   position: relative;
@@ -174,7 +183,7 @@
   border: 2px solid var(--theme-main__color);
 }
 
-@media (width <= 375px) {
+@media (width <= 390px) {
   .save__button svg {
     width: 28px;
     height: 28px;
@@ -194,16 +203,19 @@
 
 .dialog__content {
   padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 353px;
 }
 
-@media (width <= 375px) {
-  .dialog__content {
-    padding: 30px 40px;
-  }
+.dialog__content svg {
+  flex-shrink: 0;
 }
 
 .dialog .button__text {
   line-height: 150%;
+  text-transform: uppercase;
 }
 
 .dialog__attention {
@@ -214,10 +226,26 @@
   padding-block-end: 30px;
 }
 
+.dialog__text {
+  max-width: 234px;
+}
+
 .dialog__ok-button {
-  padding: 10.5px 114.5px;
+  padding: 6.5px 130.5px;
   border: 2px solid var(--theme-main__color);
-  
+  line-height: 90%;
+}
+
+@media (width <= 390px) {
+  .dialog__content {
+    padding: 30px 40px;
+    width: 341px;
+    max-width: 341px;
+  }
+
+  .dialog__ok-button {
+    padding: 6.5px 114.5px;
+  }
 }
 
 dialog[open] {
@@ -266,38 +294,32 @@ dialog::backdrop {
 }
 
 /* Фильтры для изображений */
-.filter-1 {
+.filter-brightness__contrast__saturate {
   filter: brightness(1.05) contrast(2) saturate(1.1);
 }
 
-.filter-2 {
+.filter-invert {
   filter: invert(1);
 }
 
-.filter-3 {
+.filter-hue-rotate__brightness__saturate {
   filter: hue-rotate(80deg) brightness(0.95) saturate(1.4);
 }
 
-.filter-4 {
+.filter-grayscale__opacity {
   filter: grayscale(1) opacity(0.3);
 }
 
-.filter-5 {
+.filter-sepia__saturate__brightness {
   filter: sepia(2) saturate(2) brightness(1.5);
 }
 
-.filter-6 {
+.filter-blur__saturate__hue-rotate {
   filter: blur(5px) saturate(1.4) hue-rotate(45deg);
 }
 
-.filter-7 {
+.filter-sepia__hue-rotate {
   filter: sepia(1) hue-rotate(-100deg);
-}
-
-.like-icon {
-  transform-origin: center;
-  /* transform-box: fill-box;
-  flex-shrink: 0; */
 }
 
 .like-icon .contour {
@@ -341,7 +363,8 @@ dialog::backdrop {
 }
 
 .like-icon.is-liked .heart {
-  animation: heart-scale 0.3s ease-in 0.1s forwards;
+  animation: heart-scale 0.3s ease-in 0.1s;
+  transform-origin: center;
 }
 
 .like-icon.is-liked .core {
@@ -361,7 +384,7 @@ dialog::backdrop {
 }
 
 .like-icon.is-liked .sparks {
-  animation: sparks 0.3s ease-in 0.3s forwards;
+  animation: sparks 0.3s ease-in 0.3s;
 }
 
 
