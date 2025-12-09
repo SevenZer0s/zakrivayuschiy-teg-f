@@ -106,6 +106,7 @@
   .card__label {
     text-stroke: 1px var(--theme-background);
     -webkit-text-stroke: 1px var(--theme-background);
+    text-shadow: none;
   }
 }
 
